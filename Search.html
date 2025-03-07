@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="css/search.css">
+    <title>Product</title>
+    <style>
+        @font-face {
+            font-family: 'font_MBC_unisans';
+            src: url('font/Uni_Sans_Heavy_Caps.ttf');
+        }
+        .sidebar-nav-item{
+            font-family: font_MBC_inter !important;
+        }
+        @font-face {
+            font-family: 'font_MBC_inter';
+            src: url('font/Inter/Inter_18pt-Light.ttf');
+        }
+
+    </style>
+
+</head>
+<body>
+    <!--<div class="overlay" id="overlay"></div>
+    <div class="wrapper" id="wrapper">-->
+        <nav class="nav">
+            <div class="nav-container">
+             <!-- <div class="nav-items-wrapper">-->  
+                    <div class="nav-items">
+                        <a href="#" class="nav-item">Clothing & Apparel</a>
+                        <a href="#" class="nav-item">Food & Beverages</a>
+                        <a href="#" class="nav-item">Home & Living</a>
+                        <a href="#" class="nav-item">Beauty & Skincare</a>
+                        <a href="#" class="nav-item">Electronics</a>
+                        <a href="#" class="nav-item">Toys & Games</a>
+                        <a href="#" class="nav-item">Tech & Getgets</a>
+
+                    </div>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span class="menu-icon">☰</span>
+                </button>
+            </div>
+        </nav>
+
+
+<div class="search-section">
+    <div class="search-container">
+        <p class="search-text">Search results for <span class="search-term" id="search-result">Products</span></p>
+        
+        <div class="product-grid">
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="policy.html">Policy</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="copyright">
+            © 2025 madebycanadians.ca
+        </div>
+    </div>
+</footer>
+<div class="sidebar" id="sidebar">
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+        <img src="images/logo.png" alt="Company Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+        <span style="font-size: 18px; font-weight: bold;">Made By Canadians</span>
+    </div>
+
+    <button class="close-sidebar" id="closeSidebar">×</button>
+    
+    </div>
+</div>
+</body>
+<script src="js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const dots = document.querySelectorAll('.dot');
+    
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+
+            const allDots = this.parentElement.querySelectorAll('.dot');
+            
+
+            allDots.forEach(d => {
+                d.classList.remove('active');
+            });
+            
+
+            this.classList.add('active');
+        });
+    });
+    
+
+    const buyButtons = document.querySelectorAll('.buy-btn');
+    
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const originalText = this.textContent;
+            this.textContent = 'Added';
+            this.style.backgroundColor = '#28a745';
+            
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.backgroundColor = '';
+            }, 1500);
+        });
+    });
+});
+
+$(document).ready(function() {
+// Get the search query string from the URL
+const urlParams = new URLSearchParams(window.location.search);
+
+// Get the value of 'search_text'
+const searchText = urlParams.get("search_text");
+
+console.log(searchText); // Debugging: Check the value in the console
+
+// Display it inside an element in your HTML
+if (searchText) {
+    debugger;
+    $('#search-result').text(searchText);
+}
+
+GetCategoryData();
+GetProductData(null,searchText);
+
+});
+
+</script>
+</html>
