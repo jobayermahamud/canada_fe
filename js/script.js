@@ -1,4 +1,4 @@
-var baseURL = "http://46.202.93.31/api/";
+var baseURL = "https://madebycanadians.ca/api/";
 var imageBaseUrl ="http://46.202.93.31:3000";
 
 function GetCategoryData() {
